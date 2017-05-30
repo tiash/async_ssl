@@ -139,9 +139,7 @@ module Ssl_ctx = struct
       in
       (* SSL_CTX_ctrl(3) returns the new options bitmask when cmd is SSL_CTRL_OPTIONS.  We
          don't really have a use for this, so ignore. *)
-      let (_ : Unsigned.ULong.t) =
-        Bindings.Ssl_ctx.ctrl context Types.Ssl_ctrl.options opts Ctypes.null
-      in
+      let (_ : Unsigned.ULong.t) = Bindings.Ssl_ctx.set_options context opts in
       ()
   ;;
 
